@@ -1,10 +1,15 @@
 <?php 
+// echo '<pre>';
+// print_r($_GET);
+// print_r($_POST);
+// echo '</pre>';
 namespace {
 	//use
-	use App\Controller as Controller;
-	use Core\Helper\Config as Config;
-	use Core\Helper\Autoload as Autoload;
-	use Core\Helper\Router as Router;
+	use App\Controller;
+	use Core\Helper\Config;
+	use Core\Helper\Autoload;
+	use Core\Helper\Router;
+	use Core\Helper\Request;
 
 	//autoload
 	require_once 'core/helper/autoload.php';
@@ -15,7 +20,7 @@ namespace {
 	date_default_timezone_set($timezone);
 
 	//get url
-	$url = ( !empty( $_GET['url'] ) ) ? $_GET['url'] : '' ;
+	$url = Request::get(['url'])->url;
 	//route the url
 	$route = Router::route($url);
 	//set controller
@@ -31,4 +36,4 @@ namespace {
      call_user_func_array( array( $controller , "{$action}" ) , array('params' => $parameters ) );
 }
 
- ?>
+?>

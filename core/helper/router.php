@@ -1,35 +1,21 @@
 <?php 
 namespace Core\Helper
 {
-	use \Core\Helper\Config as Config;
+	use \Core\Helper\Config;
+
 	class Router
 	{
 		//helper router
 		//properties
 		private static $default_controller = '';
 		private static $routes = array();
-		private static $url_prefix = '/home/mohsen/public_html/weblog/';
 
 		//methods
 		public static function route($url = '')
 		{
-			//method route
-			//detect if request url is a file
-			/*$pattern = '/\\.[\w]+$/';
-			$subject = $url;
-			preg_match($pattern, $subject, $result);
-
-			if(!empty($result)){
-				ob_start();
-				  include self::$url_prefix . $url;
-				  $file = ob_get_contents();
-				ob_end_clean();
-				echo $file;
-				return ;
-			}// */ // this part of code removed after setting absolute path for web page urls
 			//get route config from file
-			$website_dir = Config::get('website.dir');
-			$config_file_path = $website_dir . 'app/config/router.config.php';
+			//$website_dir = Config::get('website.dir');
+			$config_file_path = 'app/config/router.config.php';
 			require_once $config_file_path;
 			//detect what controller and action can be called
 			$url = self::explode_url($url);
