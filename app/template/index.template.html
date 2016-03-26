@@ -1,0 +1,40 @@
+{% extends "base.template.html" %}
+
+{% block title %}{{ page_title }}{%  endblock %}
+{% block style %}app/template/style/main-page-style.css{%  endblock %}
+
+{% block body %}
+   <div id="posts-wrapper">
+{% for post in posts %}
+    <div class="post col-12">
+
+    	  <div class="post-header">
+    	  	<h1>{{ post.post_title }}</h1>
+    	  	<span>{{ post.post_date }}</span>
+    	  </div><!-- post-header -->
+
+    	  <div class="post-text">
+    	  {{ post.post_body|raw }}
+    	  </div><!-- post-text -->
+
+    	  <span><a href="{{ post_page_url }}{{ post.post_page_name }}" class="continu-link"></a></span>
+
+    </div><!-- post -->
+{% endfor %}
+   </div><!-- posts wrapper -->
+
+   <br style="clear:both">
+
+    <!-- start of link line bar -->
+    <div id="link-linebar">
+      <span>
+      {% if next_page %}
+        <a  id="prev-link"  href="{{ page_link_url }}{{ next_page }}"></a>
+       {% endif %}
+       {% if prev_page %}
+        <a id="next-link" href="{{ page_link_url }}{{ prev_page }}"></a>
+       {% endif %}
+      </span>
+    </div><!-- link line bar -->
+
+{% endblock %}

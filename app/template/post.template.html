@@ -1,0 +1,21 @@
+{% extends "base.template.html" %}
+
+{% block title %}{{ post_title }}{% endblock %}
+{% block style %}app/template/style/post-page-style.css{% endblock %}
+
+{% block body %}
+
+    <div class="post-wrapper">
+
+     <div class="post-header">
+       <h1>{{ post_title }}</h1>
+    	  <span>{{ post_date }}</span>
+    	</div><!-- post-header -->
+
+    	<div class="post-text">
+    	{{ post_body|raw }}
+    	</div><!-- post-text -->
+
+    </div><!-- post-wrapper -->
+
+{% endblock %}
