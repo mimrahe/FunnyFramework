@@ -1,4 +1,4 @@
-add a treat for must used functions and then create a base class using this treat then extend all classes from this class
+add a treat for must used functions and then create a base class using this treat then extend all classes from this class [ok]
 define function default in treate doing this:
 	$expression_one ? $expression_one : $default;
 $_SERVER to object
