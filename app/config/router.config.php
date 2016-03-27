@@ -1,11 +1,17 @@
 <?php 
-self::$default_controller = 'index';
-self::$routes = array(
-			'index' => array(
-				'show'
-				),
-			'post' => array(
-				'show'
-				)
-			);
- ?>
+$routes = [
+	"get" => [
+		"%^/create$%" => [
+			'controller' => 'index',
+			'action' => 'getIndex'
+		];
+	];
+
+	"ajax" => [
+		"%create_link/([[:punct:][:alnum:]]+)%" => [
+			'controller' => 'index',
+			'action' => 'ajaxCreateLink'
+		];
+	];
+];
+?>

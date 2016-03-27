@@ -7,13 +7,18 @@ namespace Core\Helper
 		{
 			$gets = new \stdClass();
 			foreach ($items as $item) {
-				if ($_GET[$item] or $default[$item])
-					$gets->{$item} = $_GET[$item] ?: $default[$item];
+				if(isset($_GET[$item])){
+					$gets->{$item} = $_GET[$item];
+					continue;
+				}
+				if(isset($default[$item])){
+					$gets->{$item} = $default[$item];
+				}
 			}
 			return $gets;
 		}
 
-		public static function getHas($items = [])
+		public static function getHas(array $items)
 		{
 			$has = new \stdClass();
 			foreach ($items as $item) {
@@ -26,13 +31,18 @@ namespace Core\Helper
 		{
 			$posts = new \stdClass();
 			foreach ($items as $item) {
-				if ($_POST[$item] or $default[$item])
-					$posts->{$item} = $_POST[$item] ?: $default[$item];
+				if(isset($_POST[$item])){
+					$posts->{$item} = $_POST[$item];
+					continue;
+				}
+				if(isset($default[$item])){
+					$posts->{$item} = $default[$item];
+				}
 			}
 			return $posts;
 		}
 
-		public static function postHas($items = [])
+		public static function postHas(array $items)
 		{
 			$has = new \stdClass();
 			foreach ($items as $item) {
@@ -41,11 +51,11 @@ namespace Core\Helper
 			return $has;
 		}
 
-		public static function file($items = [])
+		public static function file(array $items)
 		{
 			$files = new \stdClass();
 			foreach ($items as $item) {
-				if ($_FILES[$item]) {
+				if (isset($_FILES[$item]) ) {
 					$files->{$item} = new \stdClass();
 					foreach ($_FILES[$item] as $attr => $value) {
 						$files->{$item}->{$attr} = $value;
@@ -54,6 +64,17 @@ namespace Core\Helper
 			}
 			return $files;
 		}
-	}
-}
+
+		public static function server(array $items)
+		{
+			$servers = new \stdClass();
+			foreach ($items as $item) {
+				if(isset($_SERVER[$item])){
+					$servers->{$item} = $_SERVER[$item];
+				}
+			}
+			return $servers;
+		}
+	}//class
+}//ns
 ?>

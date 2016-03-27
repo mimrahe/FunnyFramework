@@ -1,8 +1,4 @@
 <?php 
-// echo '<pre>';
-// print_r($_GET);
-// print_r($_POST);
-// echo '</pre>';
 namespace {
 	//use
 	use App\Controller;
@@ -20,7 +16,10 @@ namespace {
 	date_default_timezone_set($timezone);
 
 	//get url
-	$url = Request::get(['url'])->url;
+	$request = Request::get(['url', 'link'], ['link' => 'some']);
+	echo '<pre>';
+	var_dump($request->url, $request->link);
+	die('end');
 	//route the url
 	$route = Router::route($url);
 	//set controller
