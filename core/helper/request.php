@@ -3,11 +3,12 @@ namespace Core\Helper
 {
 	Class Request {
 
-		public static function get($items = [])
+		public static function get(array $items, array $default = [])
 		{
 			$gets = new \stdClass();
 			foreach ($items as $item) {
-				$gets->{$item} = $_GET[$item] ?: false;
+				if ($_GET[$item] or $default[$item])
+					$gets->{$item} = $_GET[$item] ?: $default[$item];
 			}
 			return $gets;
 		}
@@ -21,11 +22,12 @@ namespace Core\Helper
 			return $has;
 		}
 
-		public static function post($items = [])
+		public static function post(array $items, array $default = [])
 		{
 			$posts = new \stdClass();
 			foreach ($items as $item) {
-				$posts->{$item} = $_POST[$item] ?: false;
+				if ($_POST[$item] or $default[$item])
+					$posts->{$item} = $_POST[$item] ?: $default[$item];
 			}
 			return $posts;
 		}
@@ -43,9 +45,11 @@ namespace Core\Helper
 		{
 			$files = new \stdClass();
 			foreach ($items as $item) {
-				$files->{$item} = new \stdClass();
-				foreach ($_FILES[$item] as $attr => $value) {
-					$files->{$item}->{$attr} = $value;
+				if ($_FILES[$item]) {
+					$files->{$item} = new \stdClass();
+					foreach ($_FILES[$item] as $attr => $value) {
+						$files->{$item}->{$attr} = $value;
+					}
 				}
 			}
 			return $files;
