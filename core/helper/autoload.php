@@ -20,6 +20,7 @@ namespace Core\Helper
 			}
 			//turn ABC to abc
 			$file = strtolower($file);
+
 			//replace \ with /
 			$pattern = '/\\\/';
 			$replacement = '/';

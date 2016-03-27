@@ -3,3 +3,4 @@ define function default in treate doing this:
 	$expression_one ? $expression_one : $default;
 $_SERVER to object
 complete routing
+define config.ini in array format then cast to object in Config

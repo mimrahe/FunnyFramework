@@ -1,7 +1,7 @@
 <?php 
 namespace Core\Helper
 {
-	Class Request {
+	class Request {
 
 		public static function get(array $items, array $default = [])
 		{
@@ -13,7 +13,9 @@ namespace Core\Helper
 				}
 				if(isset($default[$item])){
 					$gets->{$item} = $default[$item];
+					continue;
 				}
+				$gets->{$item} = null;
 			}
 			return $gets;
 		}
@@ -37,7 +39,9 @@ namespace Core\Helper
 				}
 				if(isset($default[$item])){
 					$posts->{$item} = $default[$item];
+					continue;
 				}
+				$posts->{$item} = null;
 			}
 			return $posts;
 		}
@@ -67,10 +71,14 @@ namespace Core\Helper
 
 		public static function server(array $items)
 		{
+			/*
+			$obj->request_method = $_SERVER['REQUEST_METHOD']
+			*/
 			$servers = new \stdClass();
 			foreach ($items as $item) {
-				if(isset($_SERVER[$item])){
-					$servers->{$item} = $_SERVER[$item];
+				$search = strtoupper($item);
+				if(isset($_SERVER[$search])){
+					$servers->{$item} = $_SERVER[$search];
 				}
 			}
 			return $servers;

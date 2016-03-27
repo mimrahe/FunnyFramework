@@ -1,46 +1,28 @@
 <?php 
 namespace Core\Helper
 {
+	use \Core\VeryUse\Main;
+
 	class Config
 	{
+		use Main;
 		//helper config
 		//properties
-		private static $settings = array();
-		const config_file = 'app/config/config.ini';
+		private $settings;
+		const CONFIG_DIR = 'app/config/';
 
-		//methods
-		private function __construct()
+		public function __construct($config_type)
 		{
-			//no access through instance
-		}//function
-		private function __clone()
+			$config = require_once self::CONFIG_DIR . $config_type . '.php';
+			
+			$this->settings = $this->arrayToObject($config);
+		}
+
+		public function __get($item)
 		{
-			//can not be coppied
-		}//function
-
-		private static function _init()
-		{
-			ob_start();
-			  include self::config_file;
-			  $contents = ob_get_contents();
-			ob_end_clean();
-
-			self::$settings = parse_ini_string($contents);
-		}//function
-
-		public static function get($what)
-		{
-			if(empty(self::$settings)){
-				self::_init();
-				//echo __line__;
-			}
-
-			if(array_key_exists($what, self::$settings) ){
-				return self::$settings[$what];
-			}
-
-			return false;
-		}//function
+			return isset($this->settings->{$item}) ? $this->settings->{$item} : null;
+		}
+		
 	}//class
 }//namespace
  ?>

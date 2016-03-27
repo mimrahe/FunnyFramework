@@ -12,11 +12,12 @@ namespace {
 	Autoload::init();
 
 	//set default timezone
-	$timezone = Config::get('website.timezone');
-	date_default_timezone_set($timezone);
+	$main_config = new Config('main');
+
+	date_default_timezone_set($main_config->timezone);
 
 	//get url
-	$request = Request::get(['url', 'link'], ['link' => 'some']);
+	$request = Request::get(['url', 'link']);
 	echo '<pre>';
 	var_dump($request->url, $request->link);
 	die('end');

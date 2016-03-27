@@ -1,5 +1,5 @@
 <?php 
-$routes = [
+return [
 	"get" => [
 		"%^/create$%" => [
 			'controller' => 'index',
@@ -7,10 +7,10 @@ $routes = [
 		];
 	];
 
-	"ajax" => [
+	"post" => [
 		"%create_link/([[:punct:][:alnum:]]+)%" => [
 			'controller' => 'index',
-			'action' => 'ajaxCreateLink'
+			'action' => 'postCreateLink'
 		];
 	];
 ];
