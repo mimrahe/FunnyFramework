@@ -1,7 +1,7 @@
 <?php 
 namespace Core\Helper
 {
-	use \Core\VeryUse\Main;
+	use \Core\Traits\Main;
 
 	class Config
 	{

@@ -18,9 +18,6 @@ namespace {
 
 	//get url
 	$request = Request::get(['url', 'link']);
-	echo '<pre>';
-	var_dump($request->url, $request->link);
-	die('end');
 	//route the url
 	$route = Router::route($url);
 	//set controller

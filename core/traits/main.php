@@ -1,5 +1,5 @@
 <?php 
-namespace Core\VeryUse
+namespace Core\Traits
 {
 	Trait Main
 	{
