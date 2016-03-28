@@ -1,74 +1,57 @@
 <?php 
 namespace Core\Helper
 {
-	use \Core\Helper\Config;
+	use \Core\Helper\Request;
 
 	class Router
-	{
-		//helper router
-		//properties
-		private static $default_controller = '';
-		private static $routes = array();
+	{		
+		const DEFINED = 'app/routes/routes.php';
+		private static $routes = [];
 
-		//methods
-		public static function route($url = '')
+		private static function routes()
 		{
-			//get route config from file
-			//$website_dir = Config::get('website.dir');
-			$config_file_path = 'app/config/router.config.php';
-			require_once $config_file_path;
-			//detect what controller and action can be called
-			$url = self::explode_url($url);
-			$url_count = count($url );
+			self::$routes = require_once self::DEFINED;
+		}
 
-			//set controller
-			if(!empty($url[0]) and array_key_exists($url[0] , self::$routes) ){
-				$controller = $url[0];
-				//set action
-				if( !empty($url[1]) and in_array($url[1] , self::$routes[$controller]) ){
-					$action = $url[1];
-					$parameters_flag = 2;
-				}else{
-					$action = 'default_action';
-					$parameters_flag = 1;
-				}//if-else
-			}else{
-				$controller = self::$default_controller;
-				//set action
-				if(!empty($url[0])  and  in_array($url[0] , self::$routes[$controller]) ){
-					$action = $url[0];
-					$parameters_flag = 1;
-				}else{
-					$action = 'default_action';
-					$parameters_flag = 0;
-				}//if-else
-			}//if-else
+		public static function to($url)
+		{
+			self::routes();
 
-			//detect parameters
-			$parameters = array();
-			for($i = $parameters_flag ; $i <= $url_count-1 ; $i++ ){
-				//set parameters
-				$param = explode( '-' , $url[ $i ] );
-				$parameters[ $param[0] ] = ( !empty($param[1]) ) ? $param[1] : 0;
+			$request_method = strtolower(Request::server(['request_method']) );
+			// find = route_name or false
+			$find = self::find($url, $request_method);
+
+			if($find){
+				die(var_dump($find));
+				$controller = $find->controller;
+				$controller = "App\\Controller\\{$controller}";
+				$controller = new $controller;
+
+				call_user_func_array([$controller, $find->action], $find->params);
+				exit;
 			}
-			//return array of controller and action and its parameters
-			return array(
-				'controller' => $controller,
-				'action' => $action,
-				'parameters' => $parameters
-				);
+			// if not found redirect to not found page
+		}
 
-		}//function
-
-		private static function explode_url($url)
+		private static function find($url, $request_method)
 		{
-			//explode url
-			if(!empty($url) )
-			{
-				return explode('/', $url);
+			foreach (self::$routes[$request_method] as $path => $props) {
+				$pattern = '%^' . $path . '$%';
+
+				if(preg_match_all($pattern , $url, $matches, PREG_SET_ORDER)){
+
+					$route = (object)$props;
+
+					$matches = $matches[0];
+					unset($matches[0]);
+
+					$route->params = $matches;
+
+					return $route;
+				}
 			}
 
-			return array();
+			return false;
 		}
 	}//class
 }//namespace
