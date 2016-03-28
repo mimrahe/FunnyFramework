@@ -6,7 +6,7 @@ return [
 			"controller" => 'Index',
 			"action" => 'getIndex'
 		],
-		'/createLink/([[:alnum:][:punct:]]+)/?' => [
+		'/createLink/([[:alnum:][:punct:]]+)' => [
 			'name' => 'getCreateLink',
 			'controller' => 'Index',
 			'action' => 'getCreateLink'
