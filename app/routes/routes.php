@@ -1,17 +1,16 @@
 <?php 
 return [
 	"get" => [
-		"%^/create$%" => [
-			'controller' => 'index',
-			'action' => 'getIndex'
-		];
-	];
-
-	"post" => [
-		"%create_link/([[:punct:][:alnum:]]+)%" => [
-			'controller' => 'index',
-			'action' => 'postCreateLink'
-		];
-	];
+		'/create/?' => [
+			'name' => 'getCreateIndex',
+			"controller" => 'Index',
+			"action" => 'getIndex'
+		],
+		'/createLink/([[:alnum:][:punct:]]+)/?' => [
+			'name' => 'getCreateLink',
+			'controller' => 'Index',
+			'action' => 'getCreateLink'
+		]
+	],
 ];
 ?>

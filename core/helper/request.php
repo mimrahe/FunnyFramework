@@ -17,6 +17,9 @@ namespace Core\Helper
 				}
 				$gets->{$item} = null;
 			}
+			if(count($items) == 1)
+				return $gets->{$items[0]};
+			
 			return $gets;
 		}
 
@@ -26,6 +29,9 @@ namespace Core\Helper
 			foreach ($items as $item) {
 				$has->{$item} = isset($_GET[$item]);
 			}
+			if(count($items) == 1)
+				return $has->{$items[0]};
+
 			return $has;
 		}
 
@@ -43,21 +49,29 @@ namespace Core\Helper
 				}
 				$posts->{$item} = null;
 			}
+			if(count($items) == 1)
+				return $posts->{$items[0]};
 			return $posts;
 		}
 
 		public static function postHas(array $items)
 		{
 			$has = new \stdClass();
+
 			foreach ($items as $item) {
 				$has->{$item} = isset($_POST[$item]);
 			}
+
+			if(count($items) == 1)
+				return $has->{$items[0]};
+
 			return $has;
 		}
 
 		public static function file(array $items)
 		{
 			$files = new \stdClass();
+
 			foreach ($items as $item) {
 				if (isset($_FILES[$item]) ) {
 					$files->{$item} = new \stdClass();
@@ -66,6 +80,9 @@ namespace Core\Helper
 					}
 				}
 			}
+			if(count($items) == 1)
+				return $files->{$items[0]};
+
 			return $files;
 		}
 
@@ -75,12 +92,16 @@ namespace Core\Helper
 			$obj->request_method = $_SERVER['REQUEST_METHOD']
 			*/
 			$servers = new \stdClass();
+		
 			foreach ($items as $item) {
 				$search = strtoupper($item);
 				if(isset($_SERVER[$search])){
 					$servers->{$item} = $_SERVER[$search];
 				}
 			}
+			if(count($items) == 1)
+				return $servers->{$items[0]};
+
 			return $servers;
 		}
 	}//class

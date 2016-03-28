@@ -15,7 +15,7 @@ namespace Core\Traits
 			return $object;
 		}
 
-		public function default($item, $default, $check_empty = true)
+		public function orDefault($item, $default, $check_empty = true)
 		{
 			// item exists
 			if(isset($item)){
