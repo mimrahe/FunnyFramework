@@ -5,3 +5,12 @@ $_SERVER to object [ok]
 complete routing [ok]
 define config.ini in array format then cast to object in Config [ok]
 define exception handling
+	a base exception class
+	called when we wants to manage an error with params exception name , method , some params
+	base class gets exception name and exception type and some params
+	a config file than defines exception name and exception class place
+	if found call exception custom method with name 'type' and do something
+
+
+define class for app settings calling App
+define functionality for redirect
