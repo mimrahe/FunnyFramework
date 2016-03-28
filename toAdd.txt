@@ -13,4 +13,4 @@ define exception handling
 
 
 define class for app settings calling App
-define functionality for redirect
+define functionality for redirect [ok]
