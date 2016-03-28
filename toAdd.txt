@@ -1,6 +1,6 @@
 add a treat for must used functions and then create a base class using this treat then extend all classes from this class [ok]
 define function default in treate doing this:
 	$expression_one ? $expression_one : $default;
-$_SERVER to object
+$_SERVER to object [ok]
 complete routing
-define config.ini in array format then cast to object in Config
+define config.ini in array format then cast to object in Config [ok]
