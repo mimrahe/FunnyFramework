@@ -53,6 +53,12 @@ namespace Core\Helper
 
 			return false;
 		}
+
+		public static function redirect($url)
+		{
+			header("Location: {$url}", true, 307);
+			exit;
+		}
 	}//class
 }//namespace
  ?>
