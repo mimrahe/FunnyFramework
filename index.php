@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace {
 	//use
 	use App\Controller;
@@ -6,6 +6,9 @@ namespace {
 	use Core\Helper\Autoload;
 	use Core\Helper\Router;
 	use Core\Helper\Request;
+
+	echo '<pre>';
+	die(var_dump($_GET, $_POST, $_SERVER));
 
 	//autoload
 	require_once 'core/helper/autoload.php';
@@ -18,6 +21,7 @@ namespace {
 
 	//get url
 	$url = Request::get(['url']);
+	die($url);
 	//route the url
 	$route = Router::to($url);
 }
