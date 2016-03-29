@@ -7,10 +7,10 @@ namespace Core\Helper
 		//methods
 		public static function init()
 		{
-			spl_autoload_register('self::_load_class');
+			spl_autoload_register('self::loadClass');
 		}//function
 
-		private static function _load_class($file)
+		private static function loadClass($file)
 		{
 			//echo $file . '<br>';
 			//determine if file is twig's
