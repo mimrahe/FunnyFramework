@@ -3,6 +3,7 @@ namespace Core
 {
 	use \Core\Helper\Database as Database;
 	use \Core\Helper\Date as Date;
+	
 	class Model
 	{
 		//class model
