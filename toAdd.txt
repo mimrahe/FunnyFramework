@@ -12,5 +12,5 @@ define exception handling
 	if found call exception custom method with name 'type' and do something
 
 
-define class for app settings calling App
+define class for app settings calling App [ok]
 define functionality for redirect [ok]
