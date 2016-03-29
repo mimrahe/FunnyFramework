@@ -2,6 +2,8 @@
 namespace Core\Helper
 {
 	use \Core\Helper\Request;
+	use \Core\Helper\Except;
+
 
 	class Router
 	{		
@@ -28,7 +30,6 @@ namespace Core\Helper
 			$find = self::find($url, $request_method);
 
 			if($find){
-				die(var_dump($find));
 				$controller = $find->controller;
 				$controller = "App\\Controller\\{$controller}";
 				$controller = new $controller;
@@ -36,7 +37,9 @@ namespace Core\Helper
 				call_user_func_array([$controller, $find->action], $find->params);
 				exit;
 			}
+
 			// if not found redirect to not found page
+			Except::make('route', 'notFound');
 		}
 
 		private static function find($url, $request_method)

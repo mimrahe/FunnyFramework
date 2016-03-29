@@ -4,7 +4,7 @@ define function default in treate doing this:
 $_SERVER to object [ok]
 complete routing [ok]
 define config.ini in array format then cast to object in Config [ok]
-define exception handling
+define exception handling [ok]
 	a base exception class
 	called when we wants to manage an error with params exception name , method , some params
 	base class gets exception name and exception type and some params
@@ -14,3 +14,4 @@ define exception handling
 
 define class for app settings calling App [ok]
 define functionality for redirect [ok]
+take place index.php in dir public and change server root then change requires path
