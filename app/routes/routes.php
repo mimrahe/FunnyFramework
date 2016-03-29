@@ -3,7 +3,7 @@ return [
 	"get" => [
 		'/create/?' => [
 			'name' => 'getCreateIndex',
-			"controller" => 'Index',
+			"controller" => 'Create',
 			"action" => 'getIndex'
 		],
 		'/createLink/([[:alnum:][:punct:]]+)' => [
