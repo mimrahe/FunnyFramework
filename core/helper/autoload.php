@@ -26,8 +26,7 @@ namespace Core\Helper
 			$replacement = '/';
 			$file = preg_replace($pattern, $replacement, $file);
 			//include file
-			//echo $file .'<br>';
-			require_once $file.'.php';
+			require_once '../' . $file.'.php';
 		}//function
 	}//class
 }//namespace

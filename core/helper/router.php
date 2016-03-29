@@ -7,7 +7,7 @@ namespace Core\Helper
 
 	class Router
 	{		
-		const DEFINED = 'app/routes/routes.php';
+		const DEFINED = '../app/routes/routes.php';
 		private static $routes = [];
 
 		private static function routes()

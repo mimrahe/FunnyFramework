@@ -9,7 +9,7 @@ namespace Core\Helper
 		//helper config
 		//properties
 		private $settings;
-		const CONFIG_DIR = 'app/config/';
+		const CONFIG_DIR = '../app/config/';
 
 		public function __construct($config_type)
 		{
