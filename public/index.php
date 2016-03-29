@@ -6,7 +6,7 @@ namespace {
 	use Core\Helper\App;
 
 	//autoload
-	require_once 'core/helper/autoload.php';
+	require_once '../core/helper/autoload.php';
 	Autoload::init();
 
 	//initialize app
