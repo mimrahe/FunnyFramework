@@ -13,7 +13,13 @@ namespace Core\Helper
 			self::$routes = require_once self::DEFINED;
 		}
 
-		public static function to($url)
+		public static function start()
+		{
+			$url = Request::get(['url'], ['url' => '/']);
+			self::to($url);
+		}
+
+		private static function to($url)
 		{
 			self::routes();
 
