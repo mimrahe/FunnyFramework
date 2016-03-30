@@ -6,10 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Core\\Traits\\' => array($baseDir . '/core/traits'),
-    'Core\\Helper\\' => array($baseDir . '/core/helper'),
-    'Core\\Exception\\' => array($baseDir . '/core/exception'),
+    'Fenom\\' => array($vendorDir . '/fenom/fenom/src'),
     'Core\\' => array($baseDir . '/core'),
-    'App\\Model\\' => array($baseDir . '/app/model'),
-    'App\\Controller\\' => array($baseDir . '/app/controller'),
+    'App\\' => array($baseDir . '/app'),
 );
