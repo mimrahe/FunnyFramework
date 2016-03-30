@@ -1,8 +1,8 @@
 <?php 
 namespace Core\Helper
 {
-	use \Core\Helper\Request;
-	use \Core\Helper\Except;
+	use Core\Helper\Request;
+	use Core\Helper\Except;
 
 
 	class Router

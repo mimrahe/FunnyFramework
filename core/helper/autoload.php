@@ -1,32 +1,21 @@
 <?php 
 namespace Core\Helper
 {
+	use \Symfony\Component\ClassLoader\MapClassLoader;
+
 	class Autoload
 	{
 		//helper autoload
 		//methods
 		public static function init()
 		{
-			spl_autoload_register('self::loadClass');
-		}//function
+			require_once '../lib/symfony/class-loader/MapClassLoader.php';
 
-		private static function loadClass($file)
-		{
-			//echo $file . '<br>';
-			//determine if file is twig's
-			if(preg_match('/Twig/', $file))
-			{
-				return ;
-			}
-			//turn ABC to abc
-			$file = strtolower($file);
+			$mapping = require_once '../app/config/autoload.php';
 
-			//replace \ with /
-			$pattern = '/\\\/';
-			$replacement = '/';
-			$file = preg_replace($pattern, $replacement, $file);
-			//include file
-			require_once '../' . $file.'.php';
+			$loader = new MapClassLoader($mapping);
+
+			$loader->register(true);
 		}//function
 	}//class
 }//namespace

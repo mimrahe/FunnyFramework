@@ -8,7 +8,7 @@ namespace {
 	//autoload
 	require_once '../core/helper/autoload.php';
 	Autoload::init();
-
+	
 	//initialize app
 	App::init();
 
