@@ -1,19 +1,14 @@
 <?php
-namespace {
 	//use
-	use Core\Helper\Autoload;
 	use Core\Helper\Router;
 	use Core\Helper\App;
 
 	//autoload
-	require_once '../core/helper/autoload.php';
-	Autoload::init();
+	require_once '../vendor/autoload.php';
 	
 	//initialize app
 	App::init();
 
 	// start routing
 	Router::start();
-}
-
 ?>

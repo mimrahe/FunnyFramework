@@ -1,0 +1,13 @@
+{
+    "require": {},
+    "autoload": {
+    	"psr-0": {
+    		"Core\\": "core/",
+    		"Core\\Helper\\": "core/helper/",
+    		"Core\\Traits\\": "core/traits/",
+    		"Core\\Exception\\": "core/exception/",
+    		"App\\Controller\\": "app/controller/",
+    		"App\\Model\\": "app/model/"
+    	}
+    }
+}
