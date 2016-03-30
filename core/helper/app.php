@@ -1,7 +1,7 @@
 <?php 
 namespace Core\Helper
 {
-	use \Core\Helper\Config;
+	use Core\Helper\Config;
 
 	class App
 	{
