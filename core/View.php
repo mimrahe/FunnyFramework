@@ -1,15 +1,12 @@
 <?php 
 namespace Core{
 
-	use Fenom;
 	use Core\Helper\Config;
 
 	class View{
 
-		const TEMPLATES_DIR = '';
-		const COMPILED_DIR = '';
 		private static $init = false;
-		private static $fenom = '';
+		private static $twig = '';
 		private static $info = [];
 		private static $error = [];
 
@@ -18,13 +15,12 @@ namespace Core{
 			if (self::$init)
 				return ;
 
-			$config = new Config('fenom');
-			self::TEMPLATES_DIR = $config->templates_dir;
-			self::COMPILED_DIR = $config->compiled_dir;
+			$config = new Config('templateEngine');
 
-			$options = [];
-
-			self::$fenom = Fenom::factory(self::TEMPLATES_DIR, self::COMPILED_DIR, $options);
+			$loader = new Twig_Loader_Filesystem($config->templates_dir);
+			self::$twig = new Twig_Environment($loader, [
+					'cache' => $config->compiled_dir
+				]);
 		}
 
 		public static function info($message)
@@ -37,10 +33,15 @@ namespace Core{
 			self::$error[] = $message;
 		}
 
-		public static function display($tpl, $data)
+		public static function display($tpl, $data = [])
 		{
 			self::init();
-			self::$fenom->display($tpl, $data);
+			$view_data = [
+				'error' => self::$error,
+				'info' => self::$info
+			];
+			$data = array_merge($data, $wiew_data);
+			self::$twig->render($tpl, $data);
 		}
 	}//class
 }//namespace
