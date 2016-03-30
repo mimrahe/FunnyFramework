@@ -1,53 +1,64 @@
 [
     {
-        "name": "fenom/fenom",
-        "version": "2.8.2",
-        "version_normalized": "2.8.2.0",
+        "name": "twig/twig",
+        "version": "v1.24.0",
+        "version_normalized": "1.24.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/fenom-template/fenom.git",
-            "reference": "d52aaa57a202e8990ce07897142f5f0ec961b5bd"
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fenom-template/fenom/zipball/d52aaa57a202e8990ce07897142f5f0ec961b5bd",
-            "reference": "d52aaa57a202e8990ce07897142f5f0ec961b5bd",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
+            "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
             "shasum": ""
         },
         "require": {
-            "ext-tokenizer": "*",
-            "php": ">=5.3.0"
+            "php": ">=5.2.7"
         },
         "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "dev-master"
+            "symfony/debug": "~2.7",
+            "symfony/phpunit-bridge": "~2.7"
         },
-        "time": "2016-02-23 10:21:43",
+        "time": "2016-01-25 21:22:18",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.24-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Fenom\\": "src/"
-            },
-            "classmap": [
-                "src/Fenom.php"
-            ]
+                "Twig_": "lib/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "BSD-3"
+            "BSD-3-Clause"
         ],
         "authors": [
             {
-                "name": "Ivan Shalganov",
-                "email": "a.cobest@gmail.com"
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com",
+                "role": "Project Founder"
+            },
+            {
+                "name": "Twig Team",
+                "homepage": "http://twig.sensiolabs.org/contributors",
+                "role": "Contributors"
             }
         ],
-        "description": "Fenom - excellent template engine for PHP",
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
         "keywords": [
-            "fenom",
-            "template",
-            "templater",
             "templating"
         ]
     }

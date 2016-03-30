@@ -1,51 +1,47 @@
 <?php 
 namespace Core{
 
-	//use \Core\Helper\Twig\
+	use Fenom;
+	use Core\Helper\Config;
+
 	class View{
-		//properties
-		//private static $template = '';
-		//private static $context = array();
-		private static $twig_environment = '';
-		const TEMPLATES_PATH = 'app/template/';
-		const TEMPLATE_NAME_PATTERN = '.template.html';
 
-		//methods
-		public static function render($template, $context = array() )
-		{
-			//render template
-			$template = $template . self::TEMPLATE_NAME_PATTERN;
-			echo self::$twig_environment->render( $template , $context);
-		}//function
+		const TEMPLATES_DIR = '';
+		const COMPILED_DIR = '';
+		private static $init = false;
+		private static $fenom = '';
+		private static $info = [];
+		private static $error = [];
 
-		/*public static function set_context($context)
+		private static function init()
 		{
-			self::$context = $context;
-		}//function  */
+			if (self::$init)
+				return ;
 
-		/*private static function load_template($template)
-		{
-			$template = self::TEMPLATES_PATH . $template . self::TEMPLATE_NAME_PATTERN;
-			ob_start();
-				include $template;
-				$template = ob_get_contents();
-			ob_end_clean();
-			self::$template = $template;
-		}//function  */
+			$config = new Config('fenom');
+			self::TEMPLATES_DIR = $config->templates_dir;
+			self::COMPILED_DIR = $config->compiled_dir;
 
-		public static function init()
+			$options = [];
+
+			self::$fenom = Fenom::factory(self::TEMPLATES_DIR, self::COMPILED_DIR, $options);
+		}
+
+		public static function info($message)
 		{
-			//init twig template engine
-			require_once '/home/mohsen/public_html/localhost_list/core/Twig/lib/Twig/Autoloader.php';
-			\Twig_Autoloader::register();
-			////load template content
-			//change//self::load_template($template);
-			//instance twig and give it template content
-			$twig_loader = new \Twig_Loader_Filesystem(self::TEMPLATES_PATH);
-			self::$twig_environment = new \Twig_Environment($twig_loader);
-			//unset twig loader
-			unset($twig_loader);
-		}//function
+			self::$info[] = $message;
+		}
+
+		public static function error($message)
+		{
+			self::$error[] = $message;
+		}
+
+		public static function display($tpl, $data)
+		{
+			self::init();
+			self::$fenom->display($tpl, $data);
+		}
 	}//class
 }//namespace
 ?>
