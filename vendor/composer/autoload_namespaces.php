@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Fenom\\' => array($vendorDir . '/fenom/fenom/src'),
+    'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Core\\' => array($baseDir . '/core'),
     'App\\' => array($baseDir . '/app'),
 );

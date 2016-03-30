@@ -1,6 +1,6 @@
 {
     "require": {
-        "fenom/fenom": "2.*"
+        "twig/twig": "~1.0"
         },
     "autoload": {
     	"psr-0": {
