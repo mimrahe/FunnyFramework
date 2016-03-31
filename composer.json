@@ -6,6 +6,9 @@
     	"psr-0": {
     		"Core\\": "core/",
     		"App\\": "app/"
-    	}
+    	},
+    	"files": [
+    		"core/functions/main.php"
+    	]
     }
 }
