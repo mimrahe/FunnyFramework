@@ -1,6 +1,6 @@
 <?php 
 return [
-	'templates_dir' => '',
-	'compiled_dir' => ''
+	'templates_dir' => '../app/templates/',
+	'compiled_dir' => '../app/templates/compiled/'
 ];
 ?>
