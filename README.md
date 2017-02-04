@@ -34,6 +34,33 @@ see funny.nginx.example.txt file
 **vendor**: app and framework dependecies
 
 ## How to use
+### define routes
+app/routes/routes.php
+
+```php
+return [
+	"get" => [
+		'/' => [
+			'name' => 'getCreateIndex',
+			"controller" => 'Create',
+			"action" => 'getIndex'
+		],
+		
+		'/([[:alnum:]]+)' => [
+			'name' => 'getToLink',
+			'controller' => 'Create',
+			'action' => 'getToLink'
+		]
+	],
+	'post' => [
+		'/addLink/?' => [
+			'name' => 'postAddLink',
+			'controller' => 'Create',
+			'action' => 'postAddLink'
+		]
+	]
+];
+```
 ### define controllers
 app/Controller/create.php
 
@@ -139,3 +166,18 @@ namespace App\Model
 	}
 }
 ```
+
+### use mysql database
+when your model extends `Model`:
+```php
+// in your model constructor
+parent::_contruct();
+// inits database
+```
+from any other place
+```php
+Database::init();
+```
+`Database` works via PDO. you can extend `Database` and add extra functionality.
+
+two main function is `exec` and `query` that return mysql result just like PDO result array.
