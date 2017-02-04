@@ -6,6 +6,8 @@ there is no need to any documentation for the framework because **FunnyFramework
 this version of FunnyFramework is 0.4.9 and has many weakness in coding and strategy and need for improvements!
 anyone has permissions for using and editing FunnyFramwork!
 
+# for more details see kutah project that is a very simple link shortener [Kutah link shortener](https://github.com/mimrahe/kutah)
+
 ## How to install
 
 ```bash
